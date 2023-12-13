@@ -1,0 +1,27 @@
+{
+  "name": "harrypotter",
+  "version": "1.0.0",
+  "description": "harry potter game",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srknssmn/HarryPotter.git"
+  },
+  "author": "SSS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srknssmn/HarryPotter/issues"
+  },
+  "homepage": "https://github.com/srknssmn/HarryPotter#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter</title>
+    <meta name="description" content="Harry Potter Wizarding War | Dymension Edition">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- FONT AWESOME -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"/>
+    <script src="https://kit.fontawesome.com/dc9887d570.js" crossorigin="anonymous"></script>
+    <script type="module" src="/js/detectWallet.js"></script>
+</head>
+<body>
+  
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand text-warning" href="https://hp-dym.vercel.app/" style="font-weight: 600;">Wizarding War</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://portal.dymension.xyz/rollapp/coinhunterstr_5131910-1" target="_blank"><i class="fa-brands fa-hive"></i> RollApp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  text-primary" href="https://testnet-faucet-nu.vercel.app/" target="_blank"><i class="fa-solid fa-faucet"></i> Faucet</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-square-share-nodes"></i> Social Links
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text-warning" href="https://coinhunterstr.com" target="_blank">Coin Hunters</a></li>
+                        <li><a class="dropdown-item" href="https://twitter.com/CoinHuntersTR" target="_blank">X (Twitter)</a></li>
+                        <li><a class="dropdown-item" href="https://www.youtube.com/@CoinHuntersTR" target="_blank">Youtube</a></li>
+                        <li><a class="dropdown-item" href="https://t.me/CoinHuntersTR" target="_blank">Telegram</a></li>
+                        <li><a class="dropdown-item" href="https://discord.com/invite/ueamjzTZ" target="_blank">Discord</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="https://github.com/CoinHuntersTR" target="_blank">Github</a></li>
+                        <li><a class="dropdown-item" href="https://coinhunterstr.medium.com/" target="_blank">Medium</a></li>
+                    </ul>
+                    </li>
+                </ul>
+                <button id="connectWallet" class="btn btn-outline-success ml-2" type="button">Connect Wallet</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Image -->
+    <div>
+        <img class='chbanner img-fluid w-100' src="/img/finalbattle.png" alt="Final Battle" />
+    </div>
+
+    <div class="container my-3">
+        <h1 class="text-center text-white"><strong>Harry Potter Wizarding War | Dymension Edition</strong></h1>
+    </div>
+
+    <!-- MAIN SECTION -->
+    <div class="container text-center mt-4 mb-4">
+        <div class="bg-body-secondary pb-4">
+            <div class="row container">
+                <div class="blobs-container">
+                    <h1 id="connectSection" class="text-warning blob yellow"><strong>CONNECT YOUR WALLET</strong></h1>
+                </div>
+                <div class="blobs-container">
+                    <h2 id="teamSection" class="text-warning blob yellow" hidden><strong>Choose Your Team and Join The Battle</strong></h2>
+                </div>
+                <div class="col-lg-5 bg-body-secondary">
+                <section>
+                    <div id="potterTeamPic">
+                        <img src="/img/potterteam.png" class="img-fluid rounded mx-auto d-block" alt="">
+                    </div>
+                    <div id="teamProgressPotter" hidden>
+                        <h4><span id="potterHealthID">10000000</span> / 10000000</h4>
+                        <div id="potterProgressBAR" class="container progress bg-dark">
+                            <div id="potterHealthP" class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button id="healthHarryButton" type="button" class="btn btn-outline-success btn-lg" hidden>PROTECTION</button>
+                        <button id="attackHarryButton" type="button" class="btn btn-outline-danger btn-lg" hidden>ATTACK</button>
+                    </div>
+                </section>
+                </div>
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-5 bg-body-secondary">
+                    <section>
+                        <div id="voldemortTeamPic">
+                            <img src="/img/voldemortteam.png" class="img-fluid rounded mx-auto d-block" alt="">
+                        </div>
+                        <div id="teamProgressVoldemort" hidden>
+                            <h4><span id="voldemortHealthID">10000000</span> / 10000000</h4>
+                            <div id="voldemortProgressBAR" class="container progress bg-dark">
+                                <div id="voldemortHealthP" class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <button id="healthVoldemortButton" type="button" class="btn btn-outline-success btn-lg" hidden>PROTECTION</button>
+                            <button id="attackVoldemortButton" type="button" class="btn btn-outline-danger btn-lg" hidden>ATTACK</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <section id="chooseTeamSection" class="m-4" hidden>
+                <div id="selectButtons" class="px-2 flex flex-row space-x-4 pt-2">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <button id="potterTeam" type="button" class="buttonSelect w-20 h-10 text-xl rounded-full bg-blue-500 select-button">
+                                <p class="text-white mt-2"><strong>TEAM POTTER</strong></p>
+                            </button>
+                        </div>
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-5">
+                            <button id="voldemortTeam" type="button" class="buttonSelect w-20 h-10 text-xl rounded-full bg-blue-500 select-button">
+                                <p class="text-white mt-2"><strong>TEAM VOLDEMORT</strong></p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <input id="teamSelectCheck" type="text" hidden>
+                <section id="chooseHeroPotter" hidden>
+                    <div class="container">
+                        <h3 class="text-center font-bold mt-4">Choose Your Char</h3>
+                    </div>
+                    <!-- CHAR CARDS -->
+                    <div class="text-center mt-4 container">
+                        <div class="row">
+                            <!-- CARD 1 -->
+                            <div class="col-lg-4">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="/img/potter.png" alt="">
+                                    </div>
+                                    <div class="flip-card-back container">
+                                        <h3><strong>Harry Potter</strong></h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Hit Power:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>30</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Hit Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>12 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Protection:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Pro. Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>300 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Spell:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Expecto Patronum</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Pet:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-warning"><strong>HEDWIG (OWL)</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CARD 2 -->
+                            <div class="col-lg-4">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="/img/ron.png" alt="">
+                                    </div>
+                                    <div class="flip-card-back container">
+                                        <h3><strong>Ron Weasley</strong></h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Hit Power:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>25</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Hit Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Protection:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>8</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Pro. Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>240 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Spell:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Wingardium Leviosa</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Pet:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-warning"><strong>SCABBERS (RAT)</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CARD 3 -->
+                            <div class="col-lg-4">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="/img/granger.png" alt="">
+                                    </div>
+                                    <div class="flip-card-back container">
+                                        <h3><strong>Hermione Granger</strong></h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Hit Power:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>25</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Hit Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Protection:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Pro. Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>300 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Spell:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Alohomora</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Pet:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-warning"><strong>CROOKSHANKS (CAT)</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="chooseHeroVoldemort" hidden>
+                    <div class="container">
+                        <h3 class="text-center font-bold mt-4">Choose Your Char</h3>
+                    </div>
+                    <!-- CHAR CARDS -->
+                    <div class="text-center mt-4 container">
+                        <div class="row">
+                            <!-- CARD 1 -->
+                            <div class="col-lg-4">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="/img/voldemort.png" alt="">
+                                    </div>
+                                    <div class="flip-card-back container">
+                                        <h3><strong>Lord Voldemort</strong></h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Hit Power:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>40</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Hit Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>15 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Protection:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>12</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Pro. Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>240 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Spell:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Avada Kedavra</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Pet:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-warning"><strong>NAGINI (SNAKE)</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CARD 2 -->
+                            <div class="col-lg-4">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="/img/bellatrix.png" alt="">
+                                    </div>
+                                    <div class="flip-card-back container">
+                                        <h3><strong>Bellatrix Lestrange</strong></h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Hit Power:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>30</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Hit Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>12 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Protection:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Pro. Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>300 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Spells:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Cruciatus Curse</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Wand:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <p class="text-warning"><strong>Curved Wand</strong></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- CARD 3 -->
+                            <div class="col-lg-4">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="/img/malfoy.png" alt="">
+                                    </div>
+                                    <div class="flip-card-back container">
+                                        <h3><strong>Lucius Malfoy</strong></h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Hit Power:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>25</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Hit Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Protection:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>10</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Pro. Cooldown:</p>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>300 sec.</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Spell:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Avada Kedavra</strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Wand:</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-warning"><strong>Snake Cane</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="mt-4 mb-4  text-center" id="charSelectSection" hidden>
+                    <select id="charSelect">
+                        <option disabled>Choose</option>
+                        <option id="HPSELECT" value="Harry Potter">Harry Potter</option>
+                        <option id="RWSELECT" value="Ron Weasley">Ron Weasley</option>
+                        <option id="HGSELECT" value="Hermione Granger">Hermione Granger</option>
+                        <option id="LVSELECT" value="Lord Voldemort">Lord Voldemort</option>
+                        <option id="BLSELECT" value="Bellatrix Lestrange">Bellatrix Lestrange</option>
+                        <option id="LMSELECT" value="Lucius Malfoy">Lucius Malfoy</option>
+                    </select>
+                    <input id="nickname" type="text" placeholder="Nickname" required>
+                    <button type="button" id="charSelectButton">Select</button>
+                </div>
+            </section>
+        </div>
+
+        <div id="statusScreen" hidden>
+            <div class="tab mt-4">
+                <button class="tablinks" onclick="openCity(event, 'DASHBOARD')" id="defaultOpen">DASHBOARD</button>
+                <button class="tablinks" onclick="openCity(event, 'STAKE')">STAKE</button>
+                <button class="tablinks" onclick="openCity(event, 'PLAYERS')">TOP PLAYERS</button>
+                <button class="tablinks" onclick="openCity(event, 'REWARDS')">REWARDS</button>
+            </div>
+            
+            <div id="DASHBOARD" class="tabcontent">
+                <div id="userStatus" class="userStatus">
+                    <section class="">
+                        <div class="container mt-2 mb-2 pt-2 pb-2">
+                            <h1 class="text-warning text-center underline">Player Dashboard</h1>
+                            <div class="container">
+                                <div class="row bg-white">
+                                    <!-- LEFT PANEL -->
+                                    <div class="col-lg-6 border-right-3" align="left">
+                                        <h2 class="text-primary">Status</h2>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Nickname:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger"><strong id="userNickname"></strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Team:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger">Team <strong id="userTeam"></strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Char:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger"><strong id="userChar"></strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Hit Power:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger"><strong id="userPower"></strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Hit Cooldown:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger">Blocktime + <strong id="userCooldown"></strong> Seconds</h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Protection Power:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger"><strong id="userProtection"></strong></h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Protection Cooldown:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="text-danger">Blocktime + <strong id="protectionCooldown"></strong> Seconds</h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Special Power Improve:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="text-danger"><strong id="userSpecialPower"></strong></h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button id="activateSpecialPowerButton"
+                                                        data-mdb-toggle="popover"
+                                                        title="+100 Power (+10 sec. Cooldown) | 250 XP"
+                                                        data-mdb-trigger="hover">ACTIVATE</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Special Spell Improve:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="text-danger"><strong id="userWeapon"></strong></h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button id="buyWeaponButton"
+                                                        data-mdb-toggle="popover"
+                                                        title="+25 Power (+5 sec. Cooldown) | 50 XP"
+                                                        data-mdb-trigger="hover">ACTIVATE</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Armor Improve:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="text-danger"><strong id="userArmor"></strong></h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button id="buyArmorButton"
+                                                        data-mdb-toggle="popover"
+                                                        title="+10 Power (-2 sec. Cooldown) | 50 XP"
+                                                        data-mdb-trigger="hover">ACTIVATE</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- RIGHT PANEL -->
+                                    <div class="col-lg-6" align="left">
+                                        <div class="m-1 bg-secondary-subtle p-2">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h4 style="font-weight: 800;">User's Total Hit:</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="text-danger"><strong id="userHit"></strong> Points</h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h4 style="font-weight: 800;">User's Total Protection:</h4>
+                                                </div>
+                                                <div class="col">
+                                                    <h5 class="text-danger"><strong id="userTotalProtection"></strong> Points</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h2 class="text-primary">Rewards</h2>
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>User XP:</h4>
+                                            </div>
+                                            <div class="col">
+                                                <h4 class="text-danger"><strong id="userXP"></strong></h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <h4>Earned $Galleon:</h4>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="row">
+                                                    <div class="col bg-warning">
+                                                        <h5 class="btn-dark"><strong id="userGoldTokens" class="text-dark"></strong></h5>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button class="btn btn-outline-warning" id="claimGalleonTokens">CLAIM</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <input type="text" value="0x96F23beb7D9174BB45bB8DD8Cb17427d41151203" id="myInput" disabled>
+                                            <button onclick="myFunction()">Copy $Galleon Address</button>
+                                        </div>
+                                        <h2 class="mt-4">Actions</h2>
+                                        <!-- ACTIONS SECTION -->
+                                        <div class="row mt-4 mb-4">
+                                            <h4>Improve Need: <span class="text-success" id="improveNeed"></span>$GALLEON</h4>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-primary" id="improveChar"
+                                                data-mdb-toggle="popover"
+                                                title="+3 Power +1 Protection +1 Cooldowns (PAY $GALLEON)"
+                                                data-mdb-trigger="hover">IMPROVE CHAR</button>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success" id="breakHitCooldown"
+                                                data-mdb-toggle="popover"
+                                                title="REMOVE COOLDOWN (5 XP)"
+                                                data-mdb-trigger="hover">BREAK HIT COOLDOWN</button>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" class="btn btn-success" id="breakProCooldown"
+                                                data-mdb-toggle="popover"
+                                                title="REMOVE COOLDOWN (5 XP)"
+                                                data-mdb-trigger="hover">BREAK PRO. COOLDOWN</button>
+                                            </div>
+                                            <!-- BUY ITEMS SECTION -->
+                                            <div class="container mt-4 mb-2">
+                                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                                    <div class="accordion-item">
+                                                    <h2 class="accordion-header">
+                                                        <button style="font-size: x-large;" class="accordion-button collapsed text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                            <i class="fa-solid fa-cart-shopping"></i><strong>&nbsp;BUY ITEMS</strong>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                        <h4 class="p-2 mt-2">You can buy this magical items with $xGalleon <span class="text-primary btn-sm" style="font-weight: 600; font-size: smaller;">| GO STAKE</span></h4>
+                                                        <div class="accordion-body">
+                                                            <div class="row" id="buySectionDiv">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="row">
+                                                                            <button class="buySelect" id="swordButton">Sword of Gryffindor</button>
+                                                                            <p>15000 $xGALLEON | +25 Hit Power</p>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="row">
+                                                                            <button class="buySelect" id="wandButton">Elder Wand</button>
+                                                                            <p>50000 $xGALLEON | +100 Hit Power</p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- <div class="accordion-item">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                                        Accordion Item #2
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                                                    </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+            <div id="STAKE" class="tabcontent">
+                <h3 class="underline text-warning">Stake Your $GALLEON to Earn $xGalleon</h3>
+                <div class="bg-secondary-subtle pb-4">
+                    <h4 class="pt-2 m-2">USER STATUS</h4>
+                    <div class="container">
+                        <div class="row" align="left">
+                            <div class="col-lg-6">
+                                <h4>Galleon Situation</h4>
+                                <div class="row">
+                                    <div class="col">OWNED $GALLEON:</div>
+                                    <div class="col">
+                                        <h5 id="ownedGalleon"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">STAKED $GALLEON:</div>
+                                    <div class="col">
+                                        <h5 id="stakedgalleon"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4>xGalleon Situation</h4>
+                                <div class="row">
+                                    <div class="col">OWNED $xGALLEON:</div>
+                                    <div class="col">
+                                        <h5 id="ownedxGalleon"></h5>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">TOTAL EARNED $xGALLEON:</div>
+                                    <div class="col">
+                                        <h5 id="totalEarnedxGalleon"></h5>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" value="0xc005C4356bd5805302B49B2b4906863D6Aaa9124" id="myInput2" disabled>
+                                    <button onclick="myFunction2()">Copy $xGalleon Address</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- STAKE ACTION SECTION -->
+                <div class="bg-white">
+                    <div class="m-2 p-2">
+                        <div class="row">
+                            <!-- STAKE SECTION -->
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1"><strong>$Galleon Amount:</strong></span>
+                                    <input id="stakeValue" type="text" class="form-control" required>
+                                    <button id="userTokenBalance" class="">MAX</button>
+                                    <span class="input-group-text">
+                                      <select id="locktime" class="form-select" aria-label="Default select example">
+                                        <option value="3600" selected>1 Hours</option>
+                                        <option value="21600">6 Hours</option>
+                                        <option value="43200">12 Hours</option>
+                                        <option value="86400">24 Hours</option>
+                                      </select>
+                                    </span>
+                                </div>
+                                <button id="stakeButton" type="button" class="btn btn-primary mb-4 btn-lg">STAKE</button>
+                            </div>
+                            <!-- CLAIM SECTION -->
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="unstakeValue"><strong>Staked $Galleon:</strong></span>
+                                            <input id="userStakedGalleon" type="text" class="form-control" disabled>
+                                        </div>
+                                        <button id="unstakeButton" type="button" class="btn btn-outline-warning mb-4 btn-lg">UNSTAKE</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1"><strong>$xGalleon:</strong></span>
+                                            <input id="xgalleonClaimValue" type="text" class="form-control" disabled>
+                                        </div>
+                                        <button id="claimxGalleonButton" type="button" class="btn btn-success mb-4 btn-lg">CLAIM</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- STAKE RULES -->
+                    <div class="bg-warning-subtle mt-2 p-4">
+                        <h3 class="underline">Stake Rules</h3>
+                        <!-- 1 HOURS PERIYOD -->
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $GALLEON Stake Period:
+                                    </div>
+                                    <div class="col-6">
+                                        1 Hours
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $xGalleon Earnings:
+                                    </div>
+                                    <div class="col-6">
+                                        $GALLEON * 10
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        reStake Cooldown:
+                                    </div>
+                                    <div class="col-6">
+                                        6 Hours
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 6 HOURS PERIYOD -->
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $GALLEON Stake Period:
+                                    </div>
+                                    <div class="col-6">
+                                        6 Hours
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $xGalleon Earnings:
+                                    </div>
+                                    <div class="col-6">
+                                        $GALLEON * 15
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        reStake Cooldown:
+                                    </div>
+                                    <div class="col-6">
+                                        5 Hours
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 12 HOURS PERIYOD -->
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $GALLEON Stake Period:
+                                    </div>
+                                    <div class="col-6">
+                                        12 Hours
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $xGalleon Earnings:
+                                    </div>
+                                    <div class="col-6">
+                                        $GALLEON * 25
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        reStake Cooldown:
+                                    </div>
+                                    <div class="col-6">
+                                        4 Hours
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 24 HOURS PERIYOD -->
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $GALLEON Stake Period:
+                                    </div>
+                                    <div class="col-6">
+                                        24 Hours
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        $xGalleon Earnings:
+                                    </div>
+                                    <div class="col-6">
+                                        $GALLEON * 50
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        reStake Cooldown:
+                                    </div>
+                                    <div class="col-6">
+                                        3 Hours
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="PLAYERS" class="tabcontent">
+                <h3 class="text-warning" style="font-weight: 800;">Top 10 Players</h3>
+                <div class="bg-white m-4 p-4" align="left">
+                    <ol id="top10Players">
+
+                    </ol>
+                </div>
+            </div>
+    
+            <div id="REWARDS" class="tabcontent">
+                <h3 class="text-white">Soon...</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- HIT Transaction Modal Button -->
+    <div hidden>
+        <!-- Button trigger modal -->
+        <button id="modalButtonOpen" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Transaction on Road!
+        </button>
+    </div>
+
+    <!-- HIT Transaction Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-primary" id="exampleModalLabel">Transaction on road!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Great!</h4>
+                <p id="exampleModalLabelStatus">You have successfully Attack Team <strong> <span id="exampleModalLabelAct"></span> 🪄</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalButtonClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok, Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+     <!-- HEALTH Transaction Modal Button -->
+    <div hidden>
+        <!-- Button trigger modal -->
+        <button id="modalHealthButtonOpen" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#healthModal">
+        Transaction on Road!
+        </button>
+    </div>
+
+    <!-- HEALTH Transaction Modal -->
+    <div class="modal fade" id="healthModal" tabindex="-1" aria-labelledby="healthModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-primary" id="healthModalLabel">Transaction on road!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>Great!</h4>
+                <p id="healthModalLabelStatus">You have successfully Protect Team <strong> <span id="healthModalLabelAct"></span> 🪄</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button id="modalHealthButtonClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok, Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Error Modal Button -->
+    <div hidden>
+        <!-- Button trigger modal -->
+        <button id="modal2ButtonOpen" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        Error
+        </button>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModal2Label">ERROR</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <h4>INSUFFICIENT FUNDS!</h4>
+            <p>Transfer Ethereum to your wallet or donate a cheaper drink</p>
+            </div>
+            <div class="modal-footer">
+            <button id="modal2ButtonClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Welcome Modal Button -->
+    <div hidden>
+        <!-- Button trigger modal -->
+        <button id="modal3ButtonOpen" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+        Welcome
+        </button>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModal3Label" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header text-center">
+            <h4 class="text-center" align="center">🎇🎇 Welcome to Wizarding World 🎇🎇</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <h2> Choose Your Side and Join the Battle </h2>
+            <h4>🧙🏼Team Harry Potter & 👳🏼Team Lord Voldemort</h4>
+            <p>Please press the <strong>Start 🪄</strong> button and Connect your wallet to Begin!</p>
+            </div>
+            <div class="modal-footer">
+            <button id="modal3ButtonClose" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Start 🪄</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <audio controls id="healthAudio" hidden>
+        <source src="/audio/magic.wav" type="audio/wav">
+    </audio>
+    <audio controls id="hitAudio" hidden>
+        <source src="/audio/heal.wav" type="audio/wav">
+    </audio>
+  
+    
+    <script type="module" src="/js/hit.js"></script>
+    <script type="module" src="/js/protection.js"></script>
+    <script type="module" src="/js/claimGalleon.js"></script>
+    <script type="module" src="/js/claimxGalleon.js"></script>
+    <script type="module" src="/js/charSelect.js"></script>
+    <script type="module" src="/js/connectWallet.js"></script>
+    <script type="module" src="/js/createChar.js"></script>
+    <script type="module" src="/js/improveSpecialPower.js"></script>
+    <script type="module" src="/js/improveSpell.js"></script>
+    <script type="module" src="/js/improveArmor.js"></script>
+    <script type="module" src="/js/breakHitCooldown.js"></script>
+    <script type="module" src="/js/breakProCooldown.js"></script>
+    <script type="module" src="/js/improveChar.js"></script>
+    <script type="module" src="/js/buyItem.js"></script>
+    <script type="module" src="/js/getUserGalleon.js"></script>
+    <script type="module" src="/js/stakeGalleon.js"></script>
+    <script type="module" src="/js/unstakeGalleon.js"></script>
+    <script src="/js/index.js"></script>
+
+</body>
+</html>
