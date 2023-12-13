@@ -639,6 +639,25 @@ export const LOCK_ABI = [
         "type": "constructor"
     },
     {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
         "stateMutability": "payable",
         "type": "fallback"
     },
@@ -732,6 +751,13 @@ export const LOCK_ABI = [
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "internalType": "uint256",
@@ -796,14 +822,8 @@ export const LOCK_ABI = [
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "name": "totalRewardxGalleon",
+        "inputs": [],
+        "name": "totalxGalleon",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -815,16 +835,16 @@ export const LOCK_ABI = [
         "type": "function"
     },
     {
-        "inputs": [],
-        "name": "totalxGalleon",
-        "outputs": [
+        "inputs": [
             {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
             }
         ],
-        "stateMutability": "view",
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -902,7 +922,7 @@ export const LOCK_ABI = [
         "stateMutability": "payable",
         "type": "receive"
     }
-];
+]
 
 export const ERC20 = [
     {
