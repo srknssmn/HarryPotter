@@ -25,27 +25,12 @@ export const verifyNetwork = async () => {
             
             // This error code indicates that the chain has not been added to MetaMask.
             if (switchError.code === 4902) {
-                console.log("This network is not available in your metamask, please add it")
-
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_addEthereumChain',
-                        params: [
-                        { chainId: '0x1BB', 
-                        chainName:'Obscuro Testnet',
-                        rpcUrls:['https://testnet.obscu.ro/v1/?token=4ec0effbaf46bd5f76642e18aedea4638f1c26f2'],
-                        blockExplorerUrls: ['https://testnet.tenscan.com'],
-                        nativeCurrency: {
-                        symbol:'ETH', // 2-6 characters long
-                    decimals: 18
-                    }
-                        
-                        }],
-                    });
-                    } catch (addError) {
-                        // handle "add" error
-                        console.log(addError);
-                    }
+                window.alert("Connect at https://testnet.obscu.ro/")
+                if(confirm("for Ten Gateway")) {
+                    document.location = 'https://testnet.obscu.ro/';
+                } else {
+                    return;
+                }
             }
         }
     }
